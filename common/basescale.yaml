@@ -25,6 +25,89 @@ web_server:
       name: "Raw Scale Data"
       sorting_weight: 100
 
+# HX711 Load Cell Sensor
+sensor:
+  - platform: hx711
+    name: "Raw HX711"
+    id: hx711_raw
+    dout_pin: GPIO05
+    clk_pin: GPIO04
+    gain: 128
+    update_interval: 1s
+    web_server:
+        sorting_group_id: raw_scale_data
+        sorting_weight: 2
+
+  - platform: template
+    name: "Calibrated Weight"
+    id: calibrated_weight
+    unit_of_measurement: "lb"
+    accuracy_decimals: 1
+    update_interval: 1s
+    web_server:
+        sorting_group_id: raw_scale_data
+        sorting_weight: 1
+    lambda: |-
+      float raw = id(hx711_raw).state;
+      float raw0 = id(raw_zero);
+      float raw1 = id(raw_cal1);
+      float raw2 = id(raw_cal2);
+      float w1 = id(cal_weight1).state;
+      float w2 = id(cal_weight2).state;
+
+      // Avoid divide-by-zero errors
+      if (raw1 == raw0 || raw2 == raw1) return 0.0;
+
+      float m1 = (w1 - 0.0) / (raw1 - raw0);
+      float m2 = (w2 - w1) / (raw2 - raw1);
+
+      // Piecewise linear interpolation
+      if (raw < raw1) {
+        return m1 * (raw - raw0);
+      } else {
+        return w1 + m2 * (raw - raw1);
+      }
+
+  - platform: template
+    name: "Estimated Keg Weight (lbs)"
+    id: estimated_keg_weight
+    icon: mdi:keg
+    unit_of_measurement: "lbs"
+    update_interval: 10s
+    lambda: |-
+      return((id(calibrated_weight).state - id(keg_tare_weight).state));
+    web_server:
+        sorting_group_id: keg
+        sorting_weight: 11
+  - platform: template
+    name: "Estimate Beers Remaining"
+    icon: mdi:beer
+    update_interval: 10s
+    accuracy_decimals: 0
+    lambda: |-
+      return((id(estimated_keg_weight).state * 16 / id(serving_size).state));
+    web_server:
+        sorting_group_id: keg
+        sorting_weight: 10
+
+  - platform: template
+    name: "Raw Zero Stored"
+    lambda: 'return id(raw_zero);'
+    update_interval: 10s
+    internal: True
+
+  - platform: template
+    name: "Raw Cal 1 Stored"
+    lambda: 'return id(raw_cal1);'
+    update_interval: 10s
+    internal: true
+
+  - platform: template
+    name: "Raw Cal 2 Stored"
+    lambda: 'return id(raw_cal2);'
+    update_interval: 10s
+    internal: true
+
 # Globals to store raw readings for calibration
 globals:
   - id: raw_zero
