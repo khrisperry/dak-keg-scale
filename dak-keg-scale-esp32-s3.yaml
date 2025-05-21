@@ -33,4 +33,4 @@ ota:
 captive_portal:
 
 packages:
-  scalebase: !include common/scalebase.yaml
+  scalebase: !include common/basescale.yaml
