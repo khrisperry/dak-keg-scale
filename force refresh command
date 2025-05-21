@@ -1,0 +1,6 @@
+Force Refresh
+  remote_package_files:
+    url: https://github.com/khrisperry/dak-keg-scale
+    files: [dak-keg-scale-esp32-s3.yaml] 
+    ref: main  
+    refresh: 0d  
