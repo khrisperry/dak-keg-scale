@@ -4,6 +4,14 @@ esphome:
   # Automatically add the mac address to the name
   # so you can use a single firmware for all devices
   name_add_mac_suffix: true
+  on_boot: 
+    priority: -10
+    then:
+      - logger.set_level: WARN
+      - globals.set:
+          id: debug_logging_enabled
+          value: 'false'
+      - logger.log: "Debug logging disabled on startup"      
 
 esp32:
   board: esp32-s3-devkitc-1
