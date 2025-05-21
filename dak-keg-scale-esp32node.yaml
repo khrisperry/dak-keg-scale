@@ -1,5 +1,13 @@
-
+substitutions:
+  name: "dak-keg-scale"
+  friendly_name: "Dak Keg Scale"
+  project_name: "Dak Enterprises.Dak Keg Scale"
+  project_version: "0.0.1"
+  
 esp32:
   board: nodemcu-32s
   framework:
     type: arduino
+
+packages:
+  basescale: !include common/basescale.yaml
