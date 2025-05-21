@@ -14,6 +14,8 @@ esphome:
 # that are provided by this factory yaml file as the user does not need these once adopted.
 dashboard_import:
   package_import_url: github://khrisperry/dak-keg-scale/dak-keg-scale-esp32-s3.yaml@main
+  package_import_url: github://khrisperry/dak-keg-scale/common/basescale.yaml@main
+
 
 # Sets up Bluetooth LE (Only on ESP32) to allow the user
 # to provision wifi credentials to the device.
