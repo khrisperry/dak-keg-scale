@@ -1,0 +1,181 @@
+# Webserver
+web_server:
+  port: 80
+  ota: False
+  log: True
+  include_internal: False
+  version: 3
+  sorting_groups:
+    - id: Calibrate
+      name: "Calibrate"
+      sorting_weight: 110
+    - id: co2
+      name: "CO2 Info"
+      sorting_weight: 30
+    - id: reboot
+      name: "Reboot"
+      sorting_weight: 200
+    - id: config
+      name: "Keg Setup"
+      sorting_weight: 35
+    - id: keg
+      name: "Keg Info"
+      sorting_weight: 20
+    - id: raw_scale_data
+      name: "Raw Scale Data"
+      sorting_weight: 100
+
+# Globals to store raw readings for calibration
+globals:
+  - id: raw_zero
+    type: float
+    restore_value: true
+
+  - id: raw_cal1
+    type: float
+    restore_value: true
+
+  - id: raw_cal2
+    type: float
+    restore_value: true
+    
+  - id: beer_tare
+    type: float
+    restore_value: true
+
+  - id: debug_logging_enabled
+    type: bool
+    restore_value: true
+    initial_value: 'false'
+
+script:
+  - id: toggle_debug_logging
+    then:
+      - if:
+          condition:
+            lambda: 'return id(debug_logging_enabled);'
+          then:
+            - logger.set_level: WARN
+            - globals.set:
+                id: debug_logging_enabled
+                value: 'false'
+            - logger.log: "Debug logging DISABLED"
+          else:
+            - logger.set_level: DEBUG
+            - globals.set:
+                id: debug_logging_enabled
+                value: 'true'
+            - logger.log: "Debug logging ENABLED"
+
+# User-entered weight values for cal points
+number:
+  - platform: template
+    name: "Cal Point 1 Weight (lb)"
+    id: cal_weight1
+    min_value: 0.0
+    max_value: 100.0
+    step: 0.1
+    initial_value: 15.0
+    restore_value: true
+    optimistic: true
+    mode: box
+    web_server:
+      sorting_group_id: "Calibrate"
+
+  - platform: template
+    name: "Cal Point 2 Weight (lb)"
+    id: cal_weight2
+    min_value: 0.0
+    max_value: 100.0
+    step: 0.1
+    initial_value: 30.0
+    restore_value: true
+    optimistic: true
+    mode: box
+    web_server:
+      sorting_group_id: "Calibrate"
+
+  - platform: template
+    name: "Keg Tare Weight (lbs)"
+    icon: "mdi:scale-balance"
+    id: keg_tare_weight
+    min_value: 0
+    max_value: 50
+    initial_value: 30
+    optimistic: true
+    step: 1
+    restore_value: true
+    unit_of_measurement: lbs
+    mode: BOX
+    web_server:
+        sorting_group_id: config
+        sorting_weight: 10
+  - platform: template
+    name: "Serving Size (oz)"
+    icon: "mdi:glass-pint-outline"
+    id: serving_size
+    min_value: 0
+    max_value: 24
+    initial_value: 16
+    optimistic: true
+    step: 1
+    restore_value: true
+    unit_of_measurement: oz
+    mode: BOX
+    web_server:
+        sorting_group_id: config
+        sorting_weight: 11
+
+# Buttons to capture raw readings for calibration
+button:
+  - platform: template
+    name: "Set Zero Calibration"
+    id: zero_calibration_button
+    icon: "mdi:scale-balance"
+    on_press:
+      then:
+        - globals.set:
+            id: raw_zero
+            value: !lambda 'return id(hx711_raw).state;'
+        - logger.log: "Zero calibration set"
+    web_server:
+      sorting_group_id: "Calibrate"
+
+  - platform: template
+    name: "Set Cal Point 1"
+    icon: "mdi:weight"
+    on_press:
+      then:
+        - globals.set:
+            id: raw_cal1
+            value: !lambda 'return id(hx711_raw).state;'
+        - logger.log: "Calibration Point 1 set"
+    web_server:
+      sorting_group_id: "Calibrate"
+
+  - platform: template
+    name: "Set Cal Point 2"
+    icon: "mdi:weight"
+    on_press:
+      then:
+        - globals.set:
+            id: raw_cal2
+            value: !lambda 'return id(hx711_raw).state;'
+        - logger.log: "Calibration Point 2 set"
+    web_server:
+      sorting_group_id: "Calibrate"
+
+  - platform: restart
+    name: "Reboot Keg MonitorV2"
+    web_server:
+      sorting_group_id: reboot
+      sorting_weight: 1
+
+  - platform: template
+    name: "Toggle Debug Logging"
+    icon: "mdi:bug"
+    on_press:
+      then:
+        - script.execute: toggle_debug_logging
+    web_server:
+      sorting_group_id: "reboot"
