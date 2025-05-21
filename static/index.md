@@ -1,6 +1,8 @@
 # About
 
-Add some information about your project here.
+Dak Keg Scale
+
+Creates and ESPHome Device that measures the amount of beer left in your keg.  This also creates a Web Page where you can see approximate beers remaining as well as creates sensors in Home Assistant
 
 # Installation
 
