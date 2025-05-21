@@ -1,7 +1,7 @@
 substitutions:
   name: "dak-keg-scale"
   friendly_name: "Dak Keg Scale"
-  project_name: "Dak Keg Scale"
+  project_name: "Dak Keg Scale.Dak Keg Scale"
   project_version: "0.0.1"
   
 esp32:
