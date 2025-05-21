@@ -18,6 +18,9 @@ esp32:
   framework:
     type: esp-idf
 
+packages:
+  basescale: !include /common/basescale.yaml
+
 # To be able to get logs from the device via serial and api.
 logger:
 
