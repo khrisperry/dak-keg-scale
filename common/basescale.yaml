@@ -1,3 +1,35 @@
+esphome:
+  name:  ${name}
+  friendly_name: ${friendly_name}
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
+  project:
+    name: ${project_name}
+    version: ${project_version} 
+  on_boot: 
+    priority: -10
+    then:
+      - logger.set_level: WARN
+      - globals.set:
+          id: debug_logging_enabled
+          value: 'false'
+      - logger.log: "Debug logging disabled on startup"      
+
+# To be able to get logs from the device via serial and api.
+logger:
+
+# API is a requirement of the dashboard import.
+api:
+
+# OTA is required for Over-the-Air updating
+ota:
+  - platform: esphome
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device.
+captive_portal:
+
 # Webserver
 web_server:
   port: 80
