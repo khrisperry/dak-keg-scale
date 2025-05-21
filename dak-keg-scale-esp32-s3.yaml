@@ -32,3 +32,5 @@ ota:
 # to provision wifi credentials to the device.
 captive_portal:
 
+packages:
+  scalebase: !include common/scalebase.yaml
