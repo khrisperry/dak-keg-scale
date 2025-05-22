@@ -113,6 +113,7 @@ sensor:
         sorting_weight: 11
   - platform: template
     name: "Estimate Beers Remaining"
+    id: estimated_beers
     icon: mdi:beer
     update_interval: 10s
     accuracy_decimals: 0
