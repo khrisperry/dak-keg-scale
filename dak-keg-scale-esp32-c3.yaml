@@ -2,7 +2,7 @@ substitutions:
   name: "dak-keg-scale"
   friendly_name: "Dak Keg Scale"
   project_name: "Dak Enterprises.Dak Keg Scale"
-  project_version: "0.1.1"
+  project_version: "0.2.0"
   
 esp32:
   board: esp32-c3-devkitm-1
