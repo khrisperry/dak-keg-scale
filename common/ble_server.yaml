@@ -1,0 +1,62 @@
+esp32_ble_server:
+  manufacturer: "Dak Keg Scale"
+  manufacturer_data: [0xFF, 0xFF, 0xF1, 0x00]
+  id: keg_scale
+  services:
+    - uuid: 5b0be147-b4d2-435c-a6b4-0cf09c349393
+      advertise: true
+      characteristics:
+        - id: ble_estimated_beers
+          description: "Estimated Beers"
+          uuid: 547be5be-dddc-435a-82c9-2d68e26c507c
+          read: true
+          value: !lambda |-
+            char buffer1[16];
+            snprintf(buffer1, sizeof(buffer1), "%.2f", id(estimated_beers).state);
+            return std::vector<uint8_t>(buffer1, buffer1 + strlen(buffer1));
+
+        - id: ble_cal_wt
+          description: "Calibrated Weight"
+          uuid: 92a3e3b0-47a5-441c-974e-1f4ffbc6d371
+          read: true
+          value: !lambda |-
+            char buffer2[16];
+            snprintf(buffer2, sizeof(buffer2), "%.2f", id(calibrated_weight).state);
+            return std::vector<uint8_t>(buffer2, buffer2 + strlen(buffer2));
+
+        - id: ble_est_keg_wt
+          description: "Estimated Keg Weight"
+          uuid: 64bcd260-d3c2-40b6-85c2-438d3e07c042
+          read: true
+          value: !lambda |-
+            char buffer3[16];
+            snprintf(buffer3, sizeof(buffer3), "%.2f", id(estimated_keg_weight).state);
+            return std::vector<uint8_t>(buffer3, buffer3 + strlen(buffer3));
+
+
+time:
+  - platform: sntp
+    id: ntp  
+    on_time:
+    - seconds: 0,60
+      then:
+        - lambda: |-
+            id(ble_estimated_beers).set_value(to_string((int)id(estimated_beers).state));
+            id(ble_cal_wt).set_value(to_string((int)id(calibrated_weight).state));
+            id(ble_est_keg_wt).set_value(to_string((int)id(estimated_keg_weight).state));
+            ESP_LOGD("main", "*******************************************" );
+            ESP_LOGD("main", "Sending updated Estiamted Beers %f", id(estimated_beers).state );
+            ESP_LOGD("main", "Sending updated Calibrated Weight %f", id(calibrated_weight).state );
+            ESP_LOGD("main", "Sending updated Estimated Keg Weight %f", id(estimated_keg_weight).state );
+            ESP_LOGD("main", "*******************************************" );
+            //ESP_LOGD("main", "Advertisement updated");           
+            //float f_value = id(estimated_beers).state;
+            //float f_value_2 = id(calibrated_weight).state;
+            //float f_value_3 = id(estimated_keg_weight).state;
+            //uint8_t *float_data = (uint8_t*)&f_value;
+            //uint8_t *float_data_2 = (uint8_t*)&f_value_2;
+            //uint8_t *float_data_3 = (uint8_t*)&f_value_3;
+            //ESP_LOGD("main", "Sending updated Estiamted Beers %f", id(estimated_beers).state );
+            //ESP_LOGD("main", "Sending updated Calibrated Weight %f", id(calibrated_weight).state );
+            //ESP_LOGD("main", "Sending updated Estimated Keg Weight %f", id(estimated_keg_weight).state );
+            //id(keg_scale).set_manufacturer_data({ 0xFF, 0xFF, 0xF9, float_data[0], float_data[1], float_data[2], float_data[3], float_data_2[0], float_data_2[1], float_data_2[2], float_data_2[3], float_data_3[0], float_data_3[1], float_data_3[2], float_data_3[3]});
