@@ -11,4 +11,4 @@ esp32:
 
 packages:
   basescale: !include common/basescale.yaml
-  
+  ble_server: !include common/ble_server.yaml
