@@ -1,81 +1,101 @@
-# ESPHome Keg Scale
+# 🏷️ ESPHome Keg Scale
 
-This project was create to add a scale for kegs so you know how much beer is remaining in the keg (at least an estimate).  
+This project adds a smart scale to your kegerator setup so you can estimate how much beer is left in your keg.  
+Built using ESPHome and a load cell, this solution provides a simple, Wi-Fi connected way to monitor keg levels.
 
-📶 Connecting Your Keg-a-Weigher Scale to Wi-Fi
-Your Keg-a-Weigher scale ships preconfigured with a built-in captive portal to help you easily connect it to your home or business Wi-Fi network.
+---
 
-🔌 Step 1: Power On the Scale
-Plug the scale into a USB power source using the included cable. The device will boot up automatically.
+## 📶 Getting Started: Connecting Your Keg-a-Weigher Scale to Wi-Fi
 
+Your scale ships with a built-in captive portal to make Wi-Fi setup easy.
 
+---
 
-📡 Step 2: Connect to the Setup Wi-Fi Network
+### 🔌 Step 1: Power On the Scale
+
+Plug the scale into a USB power source using the included cable.  
+The device will boot up automatically.
+
+---
+
+### 📡 Step 2: Connect to the Setup Wi-Fi Network
+
 On your phone, tablet, or computer:
 
-Open your Wi-Fi settings.
+1. Open your **Wi-Fi settings**
+2. Connect to the network:  
+   **`KegScaleWiFi`**
+3. Enter the password:  
+   **`MMMMBeer`**  _(four M’s, capital B)_
 
-Look for a network named:
-KegScaleWiFi
+> ⚠️ This is a **temporary** network for setup only.
 
-Connect using this password:
-MMMMBeer (four M’s, capital B)
+---
 
-⚠️ This is a temporary Wi-Fi network used for setup only.
+### 🌐 Step 3: Open the Captive Portal
 
-
-
-🌐 Step 3: Open the Captive Portal
 After connecting:
 
-Most devices will automatically open the configuration page.
+- Most devices will automatically open the setup page
+- If not, manually open a browser and go to:  
+  **http://192.168.4.1**
 
-If it doesn’t, manually open a browser and go to:
-http://192.168.4.1
+You will see the **Keg-a-Weigher Wi-Fi Setup Page**
 
-You’ll now see the Keg-a-Weigher Wi-Fi Setup Page.
+---
 
+### 📲 Step 4: Enter Your Wi-Fi Credentials
 
+1. Select your home/business Wi-Fi network
+2. Enter your **Wi-Fi password**
+3. Click **Save & Reboot**
 
-📲 Step 4: Enter Your Wi-Fi Credentials
-Select your Wi-Fi network from the list.
+The scale will reboot and attempt to connect to your Wi-Fi.
 
-Enter your Wi-Fi password.
+---
 
-Click Save & Reboot.
+### ✅ Step 5: Verify Connection
 
-The scale will reboot and attempt to connect to the Wi-Fi network you selected.
+- If successful, the **KegScaleWiFi** network will disappear and the device will join your Wi-Fi.
+- If it fails, the device will return to **KegScaleWiFi** mode so you can try again.
 
+---
 
+## 🛠️ Troubleshooting
 
-✅ Step 5: Verify Connection
-If successful, the KegScaleWiFi network will disappear, and the scale will operate normally.
+### ❌ I don’t see the `KegScaleWiFi` network
 
-If it fails to connect, it will return to KegScaleWiFi mode so you can try again.
+- Ensure the scale is powered on
+- Move closer to the scale
+- Reboot the device (unplug/plug in)
 
-🛠️ Troubleshooting
-❌ I don’t see the KegScaleWiFi network
-Make sure the scale is powered on.
+---
 
-Move closer to the scale to ensure better signal.
+### ❌ The setup page didn’t open
 
-Try rebooting the device by unplugging and plugging it back in.
+- Open a browser and go to: **http://192.168.4.1**
+- If that doesn’t work, forget the network and reconnect, or try a different device
 
-❌ The setup page didn’t open automatically
-Open a browser manually and go to: http://192.168.4.1
+---
 
-If that doesn't work, forget the network and reconnect, or try a different device.
+### ❌ I entered the wrong Wi-Fi password
 
-❌ I entered the wrong Wi-Fi password
-The scale will fail to connect and automatically fall back to KegScaleWiFi mode.
+- The device will fail to connect and return to **KegScaleWiFi**
+- Reconnect to the setup network and try again at **http://192.168.4.1**
 
-Reconnect to KegScaleWiFi and re-enter the correct credentials at http://192.168.4.1.
+---
 
-❌ The scale keeps returning to setup mode
-Double-check your Wi-Fi credentials (case-sensitive).
+### ❌ The scale keeps returning to setup mode
 
-Make sure your router isn't using 5GHz only (ESP devices support 2.4GHz Wi-Fi only).
+- Double-check the Wi-Fi password (case-sensitive)
+- Make sure your router supports **2.4GHz** (not 5GHz only)
+- Ensure the signal is strong near the scale
+- Avoid using enterprise or login-protected Wi-Fi networks
 
-Ensure your Wi-Fi signal is strong near the scale’s location.
+---
 
-Avoid using enterprise Wi-Fi or networks that require extra login steps.
+## 📎 Want to Help?
+
+Contributions and ideas are welcome! Submit an issue or open a pull request.
+
+---
