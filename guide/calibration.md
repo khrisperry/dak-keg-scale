@@ -9,7 +9,7 @@ To calibrate the scale:
 3. Under the **Calibrate** section, click **Set Zero Calibration**.  
    ![Step 3 - Set Zero Calibration](images/Step_3_Zero.png)
 
-4. Place a known weight on the scale.
+4. Place a known weight on the scale (in this example the weight on the scale is 7.2 lbs).
 5. Enter the weight in the **Cal Point 1 Weight (lb)** field.  
    ![Step 5 - Cal Point 1 Weight](images/Cal_1_value.png)
 
@@ -17,7 +17,7 @@ To calibrate the scale:
 7. Click **Set Cal Point 1**.  
    ![Step 7 - Set Cal Point 1](images/Set_cal_1.png)
 
-8. Replace the item with a **second, heavier known weight**.
+8. Replace the item with a **second, heavier known weight**. (in this example the weight on the scale is 15.2 lbs)
 9. Enter that weight into the **Cal Point 2 Weight (lb)** field.  
    ![Step 9 - Cal Point 2 Weight](images/Cal_2_value.png)
 
