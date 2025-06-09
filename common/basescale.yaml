@@ -65,7 +65,7 @@ sensor:
     dout_pin: GPIO05
     clk_pin: GPIO04
     gain: 128
-    update_interval: 1s
+    update_interval: 5s
     web_server:
         sorting_group_id: raw_scale_data
         sorting_weight: 2
@@ -75,7 +75,7 @@ sensor:
     id: calibrated_weight
     unit_of_measurement: "lb"
     accuracy_decimals: 1
-    update_interval: 1s
+    update_interval: 5s
     web_server:
         sorting_group_id: raw_scale_data
         sorting_weight: 1
@@ -101,7 +101,7 @@ sensor:
       }
 
   - platform: template
-    name: "Estimated Keg Weight (lbs)"
+    name: "Est Keg Weight (lbs)"
     id: estimated_keg_weight
     icon: mdi:keg
     unit_of_measurement: "lbs"
@@ -112,7 +112,7 @@ sensor:
         sorting_group_id: keg
         sorting_weight: 11
   - platform: template
-    name: "Estimate Beers Remaining"
+    name: "Est Beers Remaining"
     id: estimated_beers
     icon: mdi:beer
     update_interval: 10s
@@ -171,7 +171,7 @@ script:
           condition:
             lambda: 'return id(debug_logging_enabled);'
           then:
-            - logger.set_level: WARN
+            - logger.set_level: INFO
             - globals.set:
                 id: debug_logging_enabled
                 value: 'false'
@@ -197,6 +197,7 @@ number:
     mode: box
     web_server:
       sorting_group_id: "Calibrate"
+      sorting_weight: 10
 
   - platform: template
     name: "Cal Point 2 Weight (lb)"
@@ -210,6 +211,7 @@ number:
     mode: box
     web_server:
       sorting_group_id: "Calibrate"
+      sorting_weight: 20
 
   - platform: template
     name: "Keg Tare Weight (lbs)"
@@ -256,6 +258,7 @@ button:
         - logger.log: "Zero calibration set"
     web_server:
       sorting_group_id: "Calibrate"
+      sorting_weight: 1
 
   - platform: template
     name: "Set Cal Point 1"
@@ -268,6 +271,7 @@ button:
         - logger.log: "Calibration Point 1 set"
     web_server:
       sorting_group_id: "Calibrate"
+      sorting_weight: 15
 
   - platform: template
     name: "Set Cal Point 2"
@@ -280,6 +284,7 @@ button:
         - logger.log: "Calibration Point 2 set"
     web_server:
       sorting_group_id: "Calibrate"
+      sorting_weight: 25
 
   - platform: restart
     name: "Reboot Keg MonitorV2"
