@@ -3,6 +3,9 @@
 
 Your Keg-a-Weigher display gives you real-time insight into how much beer is left in your keg and how many servings you can expect. Here’s how each value is calculated:
 
+![Estimated Stuff](images/estimated_info.png)
+![Setup Stuff](images/std_setup.png)
+
 ---
 
 ### 🍺 Estimated Beers Remaining
