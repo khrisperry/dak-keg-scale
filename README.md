@@ -165,7 +165,7 @@ To calibrate the scale:
 1. **Place the scale where it will be permanently installed.**
 2. Go to the Keg Scale's web interface.
 3. Under the **Calibrate** section, click **Set Zero Calibration**.  
-   ![Step 3 - Set Zero Calibration](images/step3-zero.png)
+   ![Step 3 - Set Zero Calibration](images/Step_3_Zero.png)
 
 4. Place a known weight on the scale.
 5. Enter the weight in the **Cal Point 1 Weight (lb)** field.  
