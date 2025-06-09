@@ -9,6 +9,7 @@ For detailed setup instructions, see the below
 
 ####  [Installation Guide](guide/installation.md)
 ####  [Calibration Guide](guide/calibration.md)
+####  [Usage Guide](guide/usage.md)
 
 ## 📎 Want to Help?
 
