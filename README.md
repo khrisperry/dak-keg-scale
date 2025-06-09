@@ -5,7 +5,9 @@ Built using ESPHome and a load cell, this solution provides a simple, Wi-Fi conn
 
 ## Setup
 
-For detailed setup instructions, see the [Installation Guide](guide/installation.md).
+For detailed setup instructions, see the below 
+  [Installation Guide](guide/installation.md)
+  [Calibration Guide](guide/calibration.md)
 
 ## 📎 Want to Help?
 
