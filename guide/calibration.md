@@ -19,7 +19,7 @@ To calibrate the scale:
 
 8. Replace the item with a **second, heavier known weight**.
 9. Enter that weight into the **Cal Point 2 Weight (lb)** field.  
-   ![Step 9 - Cal Point 2 Weight](images/Cal _2_value.png)
+   ![Step 9 - Cal Point 2 Weight](images/Cal_2_value.png)
 
 10. Wait about 5 seconds again, then click **Set Cal Point 2**.  
     ![Step 10 - Set Cal Point 2](images/Set_cal_2.png)
