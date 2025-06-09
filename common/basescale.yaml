@@ -10,7 +10,7 @@ esphome:
   on_boot: 
     priority: -10
     then:
-      - logger.set_level: WARN
+      - logger.set_level: INFO
       - globals.set:
           id: debug_logging_enabled
           value: 'false'
