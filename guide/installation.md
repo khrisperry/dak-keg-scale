@@ -68,7 +68,7 @@ Locate your device’s IP address using your router's connected devices list or 
 
 ### 🍺 Step 8: How to setup your first Keg
 
-
+[Usage Guide](guide/usage.md)
 
 ---
 
