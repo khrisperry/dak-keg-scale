@@ -63,14 +63,20 @@ interval:
           bool should_notify_cal = abs(current_cal_weight - last_cal_weight) > 0.25;
           bool should_notify_keg = abs(current_keg_weight - last_keg_weight) > 0.25;
 
-          if (should_notify_beers || should_notify_cal || should_notify_keg) {
+          if (should_notify_beers) {
             if (should_notify_beers) {
+              id(ble_cal_wt).set_value(to_string(current_cal_weight));
+              id(ble_cal_wt).notify();
+              last_cal_weight = current_cal_weight;
+              id(ble_est_keg_wt).set_value(to_string(current_keg_weight));
+              id(ble_est_keg_wt).notify();
+              last_keg_weight = current_keg_weight;
               id(ble_estimated_beers).set_value(to_string((int)current_beers));
               id(ble_estimated_beers).notify();
               last_beers = current_beers;
             }
 
-            if (should_notify_cal) {
+            /*if (should_notify_cal) {
               id(ble_cal_wt).set_value(to_string(current_cal_weight));
               id(ble_cal_wt).notify();
               last_cal_weight = current_cal_weight;
@@ -80,7 +86,7 @@ interval:
               id(ble_est_keg_wt).set_value(to_string(current_keg_weight));
               id(ble_est_keg_wt).notify();
               last_keg_weight = current_keg_weight;
-            }
+            }*/
 
             ESP_LOGI("main", "***BLE Server Update***");
             ESP_LOGI("main", "Estimated Beers %f", current_beers);
@@ -88,12 +94,3 @@ interval:
             ESP_LOGI("main", "Estimated Keg Weight %f", current_keg_weight);
           }
     
-            //float f_value_2 = id(calibrated_weight).state;
-            //float f_value_3 = id(estimated_keg_weight).state;
-            //uint8_t *float_data = (uint8_t*)&f_value;
-            //uint8_t *float_data_2 = (uint8_t*)&f_value_2;
-            //uint8_t *float_data_3 = (uint8_t*)&f_value_3;
-            //ESP_LOGD("main", "Sending updated Estiamted Beers %f", id(estimated_beers).state );
-            //ESP_LOGD("main", "Sending updated Calibrated Weight %f", id(calibrated_weight).state );
-            //ESP_LOGD("main", "Sending updated Estimated Keg Weight %f", id(estimated_keg_weight).state );
-            //id(keg_scale).set_manufacturer_data({ 0xFF, 0xFF, 0xF9, float_data[0], float_data[1], float_data[2], float_data[3], float_data_2[0], float_data_2[1], float_data_2[2], float_data_2[3], float_data_3[0], float_data_3[1], float_data_3[2], float_data_3[3]});
