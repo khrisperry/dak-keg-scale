@@ -23,7 +23,7 @@ jobs:
         #### Modify below here to match your project ####
         file:
           - dak-keg-scale-esp32
-          - dak-keg-scale-esp32node
+ #         - dak-keg-scale-esp32node
           - dak-keg-scale-esp32-c3
           - dak-keg-scale-esp32-c6
           - dak-keg-scale-esp32-s3
