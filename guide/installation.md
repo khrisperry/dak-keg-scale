@@ -62,6 +62,15 @@ Locate your device’s IP address using your router's connected devices list or 
 
 ---
 
+### 🔍 Step 7: If needed, proceed to calibration
+
+[Calibration Guide](guide/calibration.md)
+
+### 🔍 Step 8: How to setup your first Keg
+
+
+
+---
 
 ## 🛠️ Troubleshooting
 
