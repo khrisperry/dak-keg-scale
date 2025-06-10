@@ -16,9 +16,9 @@ jobs:
       files: |
         dak-keg-scale-esp32.factory.yaml
         dak-keg-scale-esp32-c3.factory.yaml
-        dak-keg-scale-esp32-c6.factory.yaml
         dak-keg-scale-esp32-s3.factory.yaml
-  #        dak-keg-scale-esp32node.factory.yaml
+#        dak-keg-scale-esp32-c6.factory.yaml
+#        dak-keg-scale-esp32node.factory.yaml
       esphome-version: 2025.4.2
       combined-name: dak-keg-scale
       #### Modify above here to match your project ####
