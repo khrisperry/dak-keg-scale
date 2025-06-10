@@ -66,6 +66,6 @@ The **Calibrated Weight** field should now display the correct weight of the ite
 ### 🍺 Next Steps
 
 - **Add Your First Keg:** [Usage Guide](usage.md)  
-- **Need Wi-Fi Setup Help?** [Getting Started Guide](wifi_setup.md)
+- **Need Wi-Fi Setup Help?** [Getting Started Guide](installation.md)
 
 ---
