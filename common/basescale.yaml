@@ -118,7 +118,7 @@ sensor:
     update_interval: 10s
     accuracy_decimals: 0
     lambda: |-
-      return((id(estimated_keg_weight).state * 16 / id(serving_size).state));
+      return floorf((id(estimated_keg_weight).state * 16.0f) / id(serving_size).state);
     web_server:
         sorting_group_id: keg
         sorting_weight: 10
