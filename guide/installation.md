@@ -58,7 +58,7 @@ The scale will reboot and attempt to connect to your Wi-Fi.
 
 ### 🔍 Step 6: Find the Keg Scale on Your Network
 
-If needed, locate your device’s IP address using your router's connected devices list.
+Locate your device’s IP address using your router's connected devices list or a tool like "fing" to scan your network.  The MAC address should be printed on the bottom of your scale. 
 
 ---
 
