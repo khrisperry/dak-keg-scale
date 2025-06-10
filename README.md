@@ -54,7 +54,3 @@ Please open an issue to discuss major changes before submitting a PR.
 
 ---
 
-## 📝 License
-
-Distributed under the **MIT License**.  
-See `LICENSE` for full details.
