@@ -64,11 +64,11 @@ Locate your device’s IP address using your router's connected devices list or 
 
 ### ⚖️ Step 7: If needed, proceed to calibration
 
-[Calibration Guide](guide/calibration.md)
+[Calibration Guide](calibration.md)
 
 ### 🍺 Step 8: How to setup your first Keg
 
-[Usage Guide](guide/usage.md)
+[Usage Guide](usage.md)
 
 ---
 
