@@ -40,9 +40,9 @@ esp32_ble_server:
     then:
       - logger.log: 
           level: INFO
-          format: "*** BLE Client connected ***"
+          format: "*** BLE Client connected (20s wait to send values) ***"
       - globals.set: { id: client_connected, value: 'true' }
-      - delay: 10s
+      - delay: 20s
       - logger.log: 
           level: INFO
           format: "*** BLE Client Send Current Values ***"
