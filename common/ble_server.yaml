@@ -40,17 +40,19 @@ esp32_ble_server:
     then:
       - logger.log: 
           level: INFO
-          format: "** BLE Client connected — Send Current Values ***"
+          format: "*** BLE Client connected ***"
+      - delay: 5s
+      - logger.log: 
+          level: INFO
+          format: "*** BLE Client Send Current Values ***"
       - lambda: |-
-          float current_beers = id(estimated_beers).state;
-          float current_cal_weight = id(calibrated_weight).state;
-          float current_keg_weight = id(estimated_keg_weight).state;
-          id(ble_estimated_beers).set_value(to_string((int)current_beers));
-          id(ble_cal_wt).set_value(to_string(current_cal_weight));
-          id(ble_est_keg_wt).set_value(to_string(current_keg_weight));
           id(ble_estimated_beers).notify();
           id(ble_cal_wt).notify();
           id(ble_est_keg_wt).notify();
+          ESP_LOGI("main", "***BLE Server Update***");
+          ESP_LOGI("main", "Estimated Beers %f", current_beers);
+          ESP_LOGI("main", "Calibrated Weight %f", current_cal_weight);
+          ESP_LOGI("main", "Estimated Keg Weight %f", current_keg_weight);
   on_disconnect: 
     then:
       - logger.log: 
