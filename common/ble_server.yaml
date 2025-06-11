@@ -38,7 +38,9 @@ esp32_ble_server:
             return std::vector<uint8_t>(buffer3, buffer3 + strlen(buffer3));
   on_connect: 
     then:
-      - logger.log: "BLE Client connected — Send Current Values"
+      - logger.log: 
+          level: INFO
+          format: "BLE Client connected — Send Current Values"
       - lambda: |-
           //id(ble_estimated_beers).set_value(to_string((int)id(estimated_beers).state));
           //id(ble_cal_wt).set_value(to_string((int)id(calibrated_weight).state));
