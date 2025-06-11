@@ -40,7 +40,7 @@ esp32_ble_server:
     then:
       - logger.log: 
           level: INFO
-          format: "BLE Client connected — Send Current Values"
+          format: "** BLE Client connected — Send Current Values ***"
       - lambda: |-
           //id(ble_estimated_beers).set_value(to_string((int)id(estimated_beers).state));
           //id(ble_cal_wt).set_value(to_string((int)id(calibrated_weight).state));
@@ -48,6 +48,11 @@ esp32_ble_server:
           id(ble_estimated_beers).notify();
           id(ble_cal_wt).notify();
           id(ble_est_keg_wt).notify();
+  on_disconnect: 
+    then:
+      - logger.log: 
+          level: INFO
+          format: "*** BLE Client disconnect ***"
 
 interval:
   - interval: 10s
