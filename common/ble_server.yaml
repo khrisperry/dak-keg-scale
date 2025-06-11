@@ -49,6 +49,9 @@ esp32_ble_server:
           id(ble_estimated_beers).notify();
           id(ble_cal_wt).notify();
           id(ble_est_keg_wt).notify();
+          float current_beers = id(estimated_beers).state;
+          float current_cal_weight = id(calibrated_weight).state;
+          float current_keg_weight = id(estimated_keg_weight).state;
           ESP_LOGI("main", "***BLE Server Update***");
           ESP_LOGI("main", "Estimated Beers %f", current_beers);
           ESP_LOGI("main", "Calibrated Weight %f", current_cal_weight);
