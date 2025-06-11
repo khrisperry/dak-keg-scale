@@ -41,7 +41,8 @@ esp32_ble_server:
       - logger.log: 
           level: INFO
           format: "*** BLE Client connected ***"
-      - delay: 5s
+      - globals.set: { id: client_connected, value: 'true' }
+      - delay: 10s
       - logger.log: 
           level: INFO
           format: "*** BLE Client Send Current Values ***"
@@ -61,11 +62,16 @@ esp32_ble_server:
       - logger.log: 
           level: INFO
           format: "*** BLE Client disconnect ***"
+      - globals.set: { id: client_connected, value: 'false' }
 
 interval:
   - interval: 10s
     then:
       - lambda: |-
+          if (!id(client_connected)) {
+                  return;
+          }
+          
           static float last_beers = -999;
           static float last_cal_weight = -999;
           static float last_keg_weight = -999;
