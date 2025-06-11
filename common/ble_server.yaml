@@ -42,9 +42,12 @@ esp32_ble_server:
           level: INFO
           format: "** BLE Client connected — Send Current Values ***"
       - lambda: |-
-          //id(ble_estimated_beers).set_value(to_string((int)id(estimated_beers).state));
-          //id(ble_cal_wt).set_value(to_string((int)id(calibrated_weight).state));
-          //id(ble_est_keg_wt).set_value(to_string((int)id(estimated_keg_weight).state));
+          float current_beers = id(estimated_beers).state;
+          float current_cal_weight = id(calibrated_weight).state;
+          float current_keg_weight = id(estimated_keg_weight).state;
+          id(ble_estimated_beers).set_value(to_string((int)current_beers));
+          id(ble_cal_wt).set_value(to_string(current_cal_weight));
+          id(ble_est_keg_wt).set_value(to_string(current_keg_weight));
           id(ble_estimated_beers).notify();
           id(ble_cal_wt).notify();
           id(ble_est_keg_wt).notify();
