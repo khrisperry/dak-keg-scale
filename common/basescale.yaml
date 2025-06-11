@@ -164,6 +164,11 @@ globals:
     restore_value: true
     initial_value: 'false'
 
+  - id: client_connected
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+
 script:
   - id: toggle_debug_logging
     then:
