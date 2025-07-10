@@ -7,14 +7,14 @@ esphome:
   project:
     name: ${project_name}
     version: ${project_version} 
-  on_boot: 
-    priority: -10
-    then:
-      - logger.set_level: INFO
-      - globals.set:
-          id: debug_logging_enabled
-          value: 'false'
-      - logger.log: "Debug logging disabled on startup"      
+#  on_boot: 
+#    priority: -10
+#    then:
+#      - logger.set_level: INFO
+#      - globals.set:
+#          id: debug_logging_enabled
+#          value: 'false'
+#      - logger.log: "Debug logging disabled on startup"      
 
 # To be able to get logs from the device via serial and api.
 logger:
