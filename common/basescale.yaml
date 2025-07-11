@@ -26,6 +26,12 @@ api:
 ota:
   - platform: esphome
 
+wifi:
+  # Set up a wifi access point using the device name above
+  ap:
+    ssid: "KegScaleWifi"
+    password: "MMMMBeer"
+
 # In combination with the `ap` this allows the user
 # to provision wifi credentials to the device.
 captive_portal:
