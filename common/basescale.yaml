@@ -31,7 +31,7 @@ wifi:
   ap:
     ssid: "KegScaleWifi"
     password: "MMMMBeer"
-    ap_timeout: 1min
+    ap_timeout: 2min
 
 # In combination with the `ap` this allows the user
 # to provision wifi credentials to the device.
