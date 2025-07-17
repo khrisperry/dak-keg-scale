@@ -7,7 +7,7 @@ substitutions:
 esp32:
   board: esp32-s3-devkitc-1
   framework:
-    type: arduino
+    type: esp-idf
 
 packages:
   basescale: !include common/basescale.yaml
